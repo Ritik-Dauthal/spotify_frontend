@@ -60,7 +60,7 @@ export default function UploadSong() {
                 <div className='flex flex-col items-center w-[80%] py-5 ml-10 md:ml-0 md:justify-around md:w-full md:flex-row'>
 
                     <div className='flex flex-col space-y-2'>
-                        <label htmlFor="Song name" className='font-semibold text-white'>
+                        <label htmlFor="Song name" className='font-semibold text-center text-white'>
                             Song name
                         </label>
                         <input
@@ -68,13 +68,13 @@ export default function UploadSong() {
                             placeholder="Song name"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
-                            className="p-3 placeholder-gray-500 border border-gray-400 border-solid rounded pl-28 hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
+                            className="p-3 placeholder-gray-500 border border-gray-400 border-solid rounded md:pl-20 hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
                             id="Song name"
 
                         />
                     </div>
                     <div className='flex flex-col my-4 space-y-2 md:my-0'>
-                        <label htmlFor="Thumbnail" className='font-semibold text-white'>
+                        <label htmlFor="Thumbnail" className='font-semibold text-center text-white'>
                             Thumbnail
                         </label>
 
@@ -104,8 +104,9 @@ export default function UploadSong() {
                         )}
                     </div>
                     <button
-                        className="flex items-center justify-center w-40 p-4 font-semibold bg-white rounded-full cursor-pointer"
+                        className="flex items-center justify-center w-40 p-4 font-semibold bg-white rounded-full cursor-pointer disabled:bg-gray-500"
                         onClick={submitSong}
+                        disabled={name === "" || thumbnail === "" || SongUrl === ""}
                     >
                         Submit Song
                     </button>

@@ -200,7 +200,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
                     </div>
                 </div>
-                <div className='w-full h-[90%] overflow-y-scroll bg-app-black'>
+                <div className='w-full md:h-[90%] h-full overflow-y-scroll bg-app-black'>
 
 
 
@@ -302,7 +302,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
             </div>
 
         )}
-        {currentSong && <div className="md:hidden absolute flex justify-between bottom-20 w-full h-[10%] bg-black bg-opacity-40 text-white  items-center px-4">
+        {currentSong && <div className="md:hidden absolute flex justify-between bottom-16 w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4">
             <div className="flex items-center">
                 <img
                     src={currentSong?.thumbnail}
