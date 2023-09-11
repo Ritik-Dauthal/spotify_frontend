@@ -103,19 +103,23 @@ export default function UploadSong() {
                             />
                         )}
                     </div>
-                    <button
-                        className="flex items-center justify-center w-40 p-4 font-semibold bg-white rounded-full cursor-pointer disabled:bg-gray-500"
-                        onClick={submitSong}
-                        disabled={name === "" || thumbnail === "" || SongUrl === ""}
-                    >
-                        Submit Song
-                    </button>
-                    <button
-                        className="flex items-center justify-center w-40 p-4 my-4 font-semibold bg-white rounded-full cursor-pointer"
-                        onClick={resetAll}
-                    >
-                        Reset
-                    </button>
+                    <div className='flex flex-row md:flex-col'>
+                        <button
+                            className="flex items-center justify-center py-3 font-semibold bg-white rounded-full cursor-pointer md:w-40 w-36 md:p-4 disabled:bg-gray-500"
+                            onClick={submitSong}
+                            disabled={name === "" || thumbnail === "" || SongUrl === ""}
+                        >
+                            Submit Song
+                        </button>
+                        <button
+                            className="flex items-center justify-center py-3 font-semibold bg-white rounded-full cursor-pointer md:w-40 w-36 md:p-4 md:my-4 disabled:bg-gray-500"
+                            onClick={resetAll}
+                            disabled={name === "" && thumbnail === "" && SongUrl === ""}
+                        >
+                            Reset
+                        </button>
+                    </div>
+
                 </div>
 
 
