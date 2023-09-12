@@ -56,7 +56,6 @@ export default function LoginContaier({ children, ActiveScreen }) {
     const firstUpdate = useRef(true);
 
     useLayoutEffect(() => {
-        // the following if statement will prevent the useEffect from running on the first render.
         if (firstUpdate.current) {
             firstUpdate.current = false;
             return;
@@ -66,7 +65,6 @@ export default function LoginContaier({ children, ActiveScreen }) {
             return;
         }
         changeSong(currentSong.track);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentSong && currentSong.track]);
 
 
@@ -135,6 +133,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         <IconText
                             iconName={"material-symbols:search-rounded"}
                             displayText={"Search"}
+                            targetLink={"/search"}
                             active={ActiveScreen === "search"}
                         />
 

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
 import { makeAuthenticatedPUTRequest } from '../Utils/helper';
 import IconWithoutText from '../Components/Shared/IconWithoutText';
 import LoginContainer from '../LoginContainer';
@@ -65,7 +64,7 @@ export default function MyProfile() {
             <div className='flex flex-col justify-between w-full h-full'>
                 <div className='flex py-4 space-x-4'>
                     <IconWithoutText iconName={"ep:back"} targetLink={"/"} size={30} />
-                    <div className='text-2xl font-semibold text-white '>Welcome, {user.firstName}</div>
+                    <div className='text-2xl font-semibold text-white '>Welcome {user.firstName},</div>
 
                 </div>
 

@@ -6,9 +6,9 @@ export default function Bottombar({ }) {
 
         <div className='flex justify-around pt-4'>
             <IconWithoutText iconName={"material-symbols:home"} targetLink={"/"} size={40} />
-            <IconWithoutText iconName={"material-symbols:search-rounded"} size={40} />
+            <IconWithoutText iconName={"material-symbols:search-rounded"} targetLink={"/search"} size={40} />
             <IconWithoutText iconName={"material-symbols:upload"} targetLink={"/uploadSong"} size={40} />
-            <IconWithoutText iconName={"material-symbols:library-music-sharp"} targetLink="/myMusic" size={40}
+            <IconWithoutText iconName={"material-symbols:library-music-sharp"} targetLink={"/myMusic"} size={40}
             />
             <IconWithoutText iconName={"material-symbols:add-box"} size={40} />
 

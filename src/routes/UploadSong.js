@@ -50,7 +50,7 @@ export default function UploadSong() {
         <LoginContainer ActiveScreen="uploadSong">
 
             <div >
-                <div className='flex py-4 space-x-4 md:ml-0'>
+                <div className='flex py-4 space-x-4'>
                     <IconWithoutText iconName={"ep:back"} targetLink={"/"} size={30} />
                     <div className='text-2xl font-semibold text-white '>Upload Your Song</div>
 

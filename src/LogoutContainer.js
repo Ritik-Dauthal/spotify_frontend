@@ -10,7 +10,7 @@ import Bottombar from './Components/Shared/Bottombar';
 
 
 
-export default function LoginContaier({ children }) {
+export default function LogoutContaier({ children }) {
     const [sideOpen, setSideOpen] = useState(false)
     const [cookie, setCookie, removeCookie] = useCookies(["token"]);
     const navigate = useNavigate()

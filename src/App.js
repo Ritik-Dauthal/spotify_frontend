@@ -9,6 +9,7 @@ import LoggedInHome from "./routes/LoggedInHome";
 import songContext from "../src/SongContext"
 import { createContext, useEffect, useState } from "react";
 import MyProfile from "./routes/MyProfile";
+import Search from "./routes/Search";
 
 export const userContext = createContext()
 
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/" element={<LoggedInHome />} />
                 <Route path="/uploadSong" element={<UploadSong />} />
                 <Route path="/myMusic" element={<MyMusic />} />
+                <Route path="/search" element={<Search />} />
                 <Route path="/myProfile" element={<MyProfile />} />
                 <Route path="*" element={<Navigate to="/" />} />
 

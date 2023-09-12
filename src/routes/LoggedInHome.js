@@ -1,13 +1,5 @@
 import React from 'react'
-import { Icon } from '@iconify/react';
-import IconText from '../Components/Shared/IconText';
-import TextWithHover from '../Components/Shared/TextWithHover'
-import Button from '../Components/Shared/Button';
 import PlaylistView from '../Components/Shared/Playlist';
-import { useCookies } from 'react-cookie';
-import SidebarLogin from '../Components/Shared/SidebarLogIn';
-import { Link, useNavigate } from 'react-router-dom';
-import Bottombar from '../Components/Shared/Bottombar';
 import LoginContaier from '../LoginContainer';
 
 
