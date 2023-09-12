@@ -8,9 +8,11 @@ export default function Bottombar({ }) {
             <IconWithoutText iconName={"material-symbols:home"} targetLink={"/"} size={40} />
             <IconWithoutText iconName={"material-symbols:search-rounded"} targetLink={"/search"} size={40} />
             <IconWithoutText iconName={"material-symbols:upload"} targetLink={"/uploadSong"} size={40} />
+
             <IconWithoutText iconName={"material-symbols:library-music-sharp"} targetLink={"/myMusic"} size={40}
             />
-            <IconWithoutText iconName={"material-symbols:add-box"} size={40} />
+            <IconWithoutText iconName={"material-symbols:add-box"} size={40} targetLink={"/playlistModal"} />
+            <IconWithoutText iconName={"clarity:library-line"} targetLink={"/myPlaylist"} size={40} />
 
         </div>
 

@@ -40,7 +40,7 @@ export default function UploadSong() {
                 </div> : <div >
                     {songData.length === 0 &&
                         <div className='flex justify-center'>
-                            <p className='text-lg text-white'>You haven't uploaded any songs yet, Please upload songs first.</p>
+                            <p className='text-lg text-white'>Please upload songs first.</p>
                         </div>}
 
                     {songData?.map((song, index) => {

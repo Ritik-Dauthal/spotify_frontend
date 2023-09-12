@@ -10,6 +10,7 @@ import Bottombar from './Components/Shared/Bottombar';
 import { Howl, Howler } from "howler";
 import songContext from "./SongContext"
 import { userContext } from './App';
+import CreatePlaylist from './modal/CreatePlaylist';
 
 
 
@@ -140,6 +141,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         <IconText
                             iconName={"icomoon-free:books"}
                             displayText={"Library"}
+                            targetLink={"/myPlaylist"}
                             active={ActiveScreen === "library"}
 
                         />
@@ -148,7 +150,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                                 "material-symbols:library-music-sharp"
                             }
                             displayText={"My Music"}
-                            targetLink="/myMusic"
+                            targetLink={"/myMusic"}
                             active={ActiveScreen === "myMusic"}
                         />
 
@@ -167,6 +169,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                             iconName={"material-symbols:add-box"}
                             displayText={"Create Playlist"}
                             active={ActiveScreen === "playlist"}
+                            targetLink={"/playlistModal"}
                         />
                         <IconText
                             iconName={"mdi:cards-heart"}
