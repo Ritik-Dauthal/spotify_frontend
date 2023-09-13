@@ -311,7 +311,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
                 </div>
             </>)}
-        {!sideOpen && currentSong && <div className="md:hidden flex justify-between w-full h-[10%] bg-black bg-opacity-90 text-white  items-center px-4" style={{ position: 'fixed', bottom: '10%', left: '0', width: '100%' }}>
+        {!sideOpen && currentSong && <div className="md:hidden flex justify-between w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4" style={{ position: 'fixed', bottom: '10%', left: '0', width: '100%' }}>
             <div className="flex items-center">
                 <img
                     src={currentSong?.thumbnail}
