@@ -1,4 +1,6 @@
-const Card = ({ title, imgUrl }) => {
+import { Icon } from "@iconify/react";
+
+const Card2 = ({ title, imgUrl }) => {
     return (
         <div className="w-full h-48 p-4 transition-transform transform bg-black rounded-lg cursor-pointer bg-opacity-40 hover:scale-105">
             <div className="h-3/5">
@@ -9,8 +11,11 @@ const Card = ({ title, imgUrl }) => {
                 />
             </div>
             <div className="py-1 overflow-hidden font-semibold text-white">{title}</div>
+            <div>
+                <Icon icon="octicon:play-24" width="30" height="30" color="white" />
+            </div>
         </div>
     );
 };
 
-export default Card;
+export default Card2;
