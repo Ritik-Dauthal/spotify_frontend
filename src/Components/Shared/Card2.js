@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 
 const Card2 = ({ title, imgUrl }) => {
     return (
-        <div className="w-full h-48 p-4 transition-transform transform bg-black rounded-lg cursor-pointer bg-opacity-40 hover:scale-105">
+        <div className="w-full h-48 p-4 bg-black rounded-lg cursor-pointer">
             <div className="h-3/5">
                 <img
                     className="object-cover w-full h-full rounded-md"
