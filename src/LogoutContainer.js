@@ -30,7 +30,7 @@ export default function LogoutContaier({ children }) {
         setSideOpen(false)
     }
 
-    return (<div className='w-screen h-screen'>
+    return (<div className='w-full h-full bg-app-black'>
 
 
         <div className='hidden w-full h-full md:flex'>
@@ -146,7 +146,7 @@ export default function LogoutContaier({ children }) {
             </>)}
 
 
-        {!sideOpen && <div className='w-full bg-black bottom-0 h-[10%] md:hidden bg-opacity-100 items-center '>
+        {!sideOpen && <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
 
             <Bottombar />
 

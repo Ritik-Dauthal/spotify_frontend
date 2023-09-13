@@ -106,7 +106,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
     };
 
 
-    return (<div className='w-full h-full'>
+    return (<div className='w-full h-full bg-app-black'>
 
         <div className={`${currentSong ? "h-[90%]" : "h-full"} hidden  w-full md:flex`}>
             <div className={`flex-col justify-between w-1/5 bg-black flex h-full `}>
@@ -311,7 +311,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
                 </div>
             </>)}
-        {currentSong && <div className="md:hidden flex justify-between w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4">
+        {!sideOpen && currentSong && <div className="md:hidden flex justify-between w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4">
             <div className="flex items-center">
                 <img
                     src={currentSong?.thumbnail}
@@ -353,7 +353,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
         </div>}
 
 
-        {<div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+        {!sideOpen && <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
 
             <Bottombar />
 
