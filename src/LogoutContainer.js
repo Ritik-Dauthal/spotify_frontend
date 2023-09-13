@@ -30,7 +30,7 @@ export default function LogoutContaier({ children }) {
         setSideOpen(false)
     }
 
-    return (<div className='w-full h-full '>
+    return (<div className='w-screen h-screen'>
 
 
         <div className='hidden w-full h-full md:flex'>

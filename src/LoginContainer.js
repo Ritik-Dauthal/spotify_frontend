@@ -106,7 +106,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
     };
 
 
-    return (<div className='w-full h-full'>
+    return (<div className='w-screen h-screen'>
 
         <div className={`${currentSong ? "h-[90%]" : "h-full"} hidden  w-full md:flex`}>
             <div className={`flex-col justify-between w-1/5 bg-black flex h-full `}>
