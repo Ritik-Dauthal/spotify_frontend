@@ -146,7 +146,7 @@ export default function LogoutContaier({ children }) {
             </>)}
 
 
-        {!sideOpen && <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%' }}>
+        {!sideOpen && <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', zIndex: 999 }}>
 
             <Bottombar />
 
