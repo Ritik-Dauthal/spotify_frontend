@@ -10,8 +10,8 @@ import songContext from "../src/SongContext"
 import { createContext, useEffect, useState } from "react";
 import MyProfile from "./routes/MyProfile";
 import Search from "./routes/Search";
-import CreatePlaylist from "./modal/CreatePlaylist";
 import Library from "./routes/Library";
+import MyPlaylist from "./routes/MyPlaylist";
 
 export const userContext = createContext()
 
@@ -58,7 +58,7 @@ function App() {
                 <Route path="/myMusic" element={<MyMusic />} />
                 <Route path="/search" element={<Search />} />
                 <Route path="/myPlaylist" element={<Library />} />
-                <Route path="/playlistModal" element={<CreatePlaylist />} />
+                <Route path="/playlist/:playlistId" element={<MyPlaylist />} />
                 <Route path="/myProfile" element={<MyProfile />} />
                 <Route path="*" element={<Navigate to="/" />} />
 

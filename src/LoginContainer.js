@@ -10,12 +10,16 @@ import Bottombar from './Components/Shared/Bottombar';
 import { Howl, Howler } from "howler";
 import songContext from "./SongContext"
 import { userContext } from './App';
+import AddPlaylist from './modal/AddPlaylist';
 import CreatePlaylist from './modal/CreatePlaylist';
+import { makeAuthenticatedPOSTRequest } from './Utils/helper';
 
 
 
 export default function LoginContaier({ children, ActiveScreen }) {
     const [sideOpen, setSideOpen] = useState(false)
+    const [openCreatePlaylistModal, setOpenCreatePlaylistModal] = useState(false)
+    const [openAddPlaylistModal, setOpenAddPlaylistModal] = useState(false)
     const [cookie, setCookie, removeCookie] = useCookies(["token"]);
     const navigate = useNavigate()
 
@@ -105,8 +109,32 @@ export default function LoginContaier({ children, ActiveScreen }) {
         }
     };
 
+    const addSongToPlaylist = async (playlistId) => {
+        const songId = currentSong._id
+        const data = { playlistId, songId }
+        const response = await makeAuthenticatedPOSTRequest("/playlist/add/song", data)
+        if (response._id) {
+            setOpenAddPlaylistModal(false)
+        }
+        alert("Song added in your playlist 🤩")
+    }
+
 
     return (<div className='w-full h-full bg-app-black'>
+        {openAddPlaylistModal && (
+            <AddPlaylist addSongToPlaylist={addSongToPlaylist}
+                closeModal={() => {
+                    setOpenAddPlaylistModal(false);
+                }}
+            />
+        )}
+        {openCreatePlaylistModal && (
+            <CreatePlaylist
+                closeModal={() => {
+                    setOpenCreatePlaylistModal(false);
+                }}
+            />
+        )}
 
         <div className={`${currentSong ? "h-[90%]" : "h-full"} hidden  w-full md:flex`}>
             <div className={`flex-col justify-between w-1/5 bg-black flex h-full `}>
@@ -168,8 +196,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         <IconText
                             iconName={"material-symbols:add-box"}
                             displayText={"Create Playlist"}
-                            active={ActiveScreen === "playlist"}
-                            targetLink={"/playlistModal"}
+                            onClick={() => setOpenCreatePlaylistModal(true)}
                         />
                         <IconText
                             iconName={"mdi:cards-heart"}
@@ -197,8 +224,8 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         <TextWithHover displayText={"Support"} />
                         <TextWithHover displayText={"Download"} />
                         <div className='border border-white'></div>
-                        <Button bText={"Log Out"} className={"px-6 py-2 font-semibold mt-2 bg-gray-200 hover:bg-white transition-transform transform hover:scale-105"} onClick={handleLoginClick} />
-                        <TextWithHover displayText={`${f}${l}`} className={"px-2 py-2 rounded-full font-semibold mt-2 bg-white hover:bg-white transition-transform transform hover:scale-105"} />
+                        <Button bText={"Log Out"} className={"px-6 py-2 font-semibold mt-2 bg-gray-200 hover:bg-white"} onClick={handleLoginClick} />
+                        <TextWithHover displayText={`${f}${l}`} className={"px-2 py-2 rounded-full font-semibold mt-2 bg-white hover:bg-white"} />
 
                     </div>
                 </div>
@@ -276,6 +303,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                     <Icon
                         icon="ic:round-playlist-add"
                         fontSize={30}
+                        onClick={() => setOpenAddPlaylistModal(true)}
                         className="text-gray-500 cursor-pointer hover:text-white"
 
                     />
@@ -330,7 +358,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                 </div>
             </div>
 
-            <div className="flex items-center justify-end w-1/4 pr-4 space-x-2">
+            <div className="flex items-center justify-end w-[40%] pr-4 space-x-2">
 
                 <Icon
                     icon={
@@ -345,6 +373,13 @@ export default function LoginContaier({ children, ActiveScreen }) {
                 />
 
                 <Icon
+                    icon="ic:round-playlist-add"
+                    fontSize={30}
+                    onClick={() => setOpenAddPlaylistModal(true)}
+                    className="text-gray-500 cursor-pointer hover:text-white"
+
+                />
+                <Icon
                     icon="ph:heart-bold"
                     fontSize={25}
                     className="text-gray-500 cursor-pointer hover:text-white"
@@ -355,7 +390,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
         {!sideOpen && <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 items-center ' style={{ position: 'fixed', bottom: '0', left: '0', width: '100%', zIndex: 999 }}>
 
-            <Bottombar />
+            <Bottombar onPlaylist={() => setOpenCreatePlaylistModal(true)} />
 
         </div>}
     </div>

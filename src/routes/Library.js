@@ -4,7 +4,7 @@ import LoginContainer from '../LoginContainer';
 import Card from '../Components/Shared/Card';
 import { makeAuthenticatedGetRequest } from '../Utils/helper';
 import { Icon } from '@iconify/react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 export default function Library() {
     const [myPlaylists, setMyPlaylists] = useState([]);
     const [loading, setLoading] = useState(true)
+    const navigate = useNavigate()
 
 
     useEffect(() => {
@@ -49,6 +50,7 @@ export default function Library() {
                             return (
                                 <Card
                                     key={index}
+                                    onClick={() => { navigate('/playlist/' + item._id) }}
                                     title={item.name}
                                     imgUrl={item.thumbnail}
                                     playlistId={item._id}

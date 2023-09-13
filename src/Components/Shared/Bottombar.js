@@ -1,7 +1,7 @@
 import React from 'react'
 import IconWithoutText from './IconWithoutText'
 
-export default function Bottombar({ }) {
+export default function Bottombar({ onPlaylist }) {
     return (
 
         <div className='flex justify-around pt-4'>
@@ -11,7 +11,7 @@ export default function Bottombar({ }) {
 
             <IconWithoutText iconName={"material-symbols:library-music-sharp"} targetLink={"/myMusic"} size={40}
             />
-            <IconWithoutText iconName={"material-symbols:add-box"} size={40} targetLink={"/playlistModal"} />
+            <IconWithoutText iconName={"material-symbols:add-box"} size={40} onClick={onPlaylist} />
             <IconWithoutText iconName={"clarity:library-line"} targetLink={"/myPlaylist"} size={40} />
 
         </div>
