@@ -33,8 +33,8 @@ export default function LogoutContaier({ children }) {
     return (<div className='w-full h-full '>
 
 
-        <div className='flex w-full h-[90%] md:h-full'>
-            <div className='flex-col justify-between hidden w-1/5 h-full bg-black md:flex '>
+        <div className='hidden w-full h-full md:flex'>
+            <div className='flex flex-col justify-between w-1/5 h-full bg-black '>
                 <div>
                     <div className='flex items-center mt-5 space-x-1 h-fit' >
                         <Icon icon="logos:spotify-icon" width="50" />
@@ -108,27 +108,11 @@ export default function LogoutContaier({ children }) {
                         <Button bText={"Log In"} className={"px-6 py-2 font-semibold mt-2 bg-gray-200 hover:bg-white transition-transform transform hover:scale-105"} onClick={handleLoginClick} />
                     </div>
                 </div>
-                <div className='w-full md:h-[90%] h-full  overflow-y-scroll  bg-app-black'>
+                <div className='w-full h-[90%] overflow-y-scroll bg-app-black'>
 
-
-                    {sideOpen ? <SidebarLogout onClose={closeSideBar} handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick} /> : (
-                        <>
-                            <div className='w-full bg-black  h-[10%] md:hidden bg-opacity-30 justify-end items-center '>
-                                <div className='flex justify-between px-4 py-3'>
-                                    <Icon icon="logos:spotify" width="150" height="40" />
-                                    <button onClick={openSideBar}>
-                                        <Icon icon="ci:hamburger-md" width="50" height="40" color='white' />
-                                    </button>
-
-
-                                </div>
-
-                            </div>
-                            <div className="p-8 pt-0 overflow-auto content">
-                                {children}
-                            </div>
-                        </>)}
-
+                    <div className="p-8 pt-0 ">
+                        {children}
+                    </div>
 
                 </div>
 
@@ -137,12 +121,36 @@ export default function LogoutContaier({ children }) {
 
         </div>
 
+        {sideOpen ? <SidebarLogout onClose={closeSideBar} handleLoginClick={handleLoginClick} handleSignupClick={handleSignupClick} /> : (
+            <>
+                <div className='w-full bg-black  h-[10%] md:hidden bg-opacity-100 '>
+                    <div className='flex justify-between px-4 py-3'>
+                        <Icon icon="logos:spotify" width="150" height="40" />
+                        <button onClick={openSideBar}>
+                            <Icon icon="ci:hamburger-md" width="50" height="40" color='white' />
+                        </button>
 
-        <div className='w-full bg-black sticky bottom-0 h-[10%] md:hidden bg-opacity-100 items-center '>
+
+                    </div>
+
+                </div>
+                <div className='md:hidden h-[80%]'>
+
+                    <div className="h-full p-8 pt-0 overflow-y-scroll bg-app-black">
+                        {children}
+                    </div>
+
+
+                </div>
+
+            </>)}
+
+
+        {!sideOpen && <div className='w-full bg-black bottom-0 h-[10%] md:hidden bg-opacity-100 items-center '>
 
             <Bottombar />
 
-        </div>
+        </div>}
     </div>
 
     )

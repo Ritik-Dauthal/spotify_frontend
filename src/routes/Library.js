@@ -28,13 +28,13 @@ export default function Library() {
     return (
         <LoginContainer ActiveScreen="library">
 
-            <div className='flex flex-col justify-between w-full h-full'>
+            <div>
                 <div className='flex py-4 space-x-4'>
                     <IconWithoutText iconName={"ep:back"} targetLink={"/"} size={30} />
                     <div className='text-2xl font-semibold text-white '>My Playlist</div>
 
                 </div>
-                {loading ? <div className='flex items-center justify-center animate-spin'> <Icon icon="teenyicons:loader-outline" width="30" height="30" color="white" />
+                {loading ? <div className='flex justify-center animate-spin'> <Icon icon="teenyicons:loader-outline" width="30" height="30" color="white" />
                 </div> : <div >
                     {myPlaylists.length === 0 &&
                         <div className='flex flex-col items-center space-y-2'>

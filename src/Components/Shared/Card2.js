@@ -10,7 +10,7 @@ const Card2 = ({ title, imgUrl }) => {
                     alt="label"
                 />
             </div>
-            <div className="py-1 overflow-hidden font-semibold text-white">{title}</div>
+            <div className="overflow-hidden font-semibold text-white">{title}</div>
             <div>
                 <Icon icon="octicon:play-24" width="30" height="30" color="white" />
             </div>

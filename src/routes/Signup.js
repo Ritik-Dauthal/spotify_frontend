@@ -82,8 +82,7 @@ export default function Signup() {
             <div className="flex justify-center w-full p-5 border-b border-gray-300 border-solid logo">
                 <Icon icon="logos:spotify" width="150" />
             </div>
-            <div className="flex flex-col items-center justify-center w-1/3 py-10 inputRegion">
-                {/*  I will have my 2 inputs(email and password) and I will have my sign up instead button*/}
+            <div className="flex flex-col items-center justify-center w-[90%] py-10 md:w-1/3 inputRegion">
                 <div className="mb-4 text-lg font-bold md:text-2xl mb:text-2xl">
                     Sign up for free to start listening.
                 </div>

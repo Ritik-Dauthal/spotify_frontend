@@ -108,8 +108,8 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
     return (<div className='w-full h-full'>
 
-        <div className={`${currentSong ? "h-[90%]" : "h-full"} w-full flex`}>
-            <div className={`flex-col justify-between hidden w-1/5  bg-black md:flex h-full `}>
+        <div className={`${currentSong ? "h-[90%]" : "h-full"} hidden  w-full md:flex`}>
+            <div className={`flex-col justify-between w-1/5 bg-black flex h-full `}>
                 <div>
                     <div className='flex items-center mt-5 space-x-1 h-fit' >
                         <Icon icon="logos:spotify-icon" width="50" />
@@ -202,27 +202,11 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
                     </div>
                 </div>
-                <div className='w-full md:h-[90%] h-full overflow-y-scroll bg-app-black'>
+                <div className='w-full h-[90%] overflow-y-scroll bg-app-black'>
 
-
-
-                    {sideOpen ? <SidebarLogin onClose={closeSideBar} handleLoginClick={handleLoginClick} handleProfileClick={handleProfileClick} /> : (
-                        <>
-                            <div className='w-full bg-black h-[10%] md:hidden bg-opacity-30 justify-end items-center '>
-                                <div className='flex justify-between px-4 py-3'>
-                                    <Icon icon="logos:spotify" width="150" height="40" />
-                                    <button onClick={openSideBar}>
-                                        <Icon icon="ci:hamburger-md" width="50" height="40" color='white' />
-                                    </button>
-
-
-                                </div>
-
-                            </div>
-                            <div className="p-8 pt-0">
-                                {children}
-                            </div>
-                        </>)}
+                    <div className="p-8 pt-0">
+                        {children}
+                    </div>
 
 
                 </div>
@@ -304,7 +288,30 @@ export default function LoginContaier({ children, ActiveScreen }) {
             </div>
 
         )}
-        {currentSong && <div className="md:hidden absolute flex justify-between bottom-16 w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4">
+
+        {sideOpen ? <SidebarLogin onClose={closeSideBar} handleLoginClick={handleLoginClick} handleProfileClick={handleProfileClick} /> : (
+            <>
+                <div className='w-full bg-black h-[10%] md:hidden bg-opacity-100 '>
+                    <div className='flex justify-between px-4 py-3'>
+                        <Icon icon="logos:spotify" width="150" height="40" />
+                        <button onClick={openSideBar}>
+                            <Icon icon="ci:hamburger-md" width="50" height="40" color='white' />
+                        </button>
+
+
+                    </div>
+
+                </div>
+                <div className={`${currentSong ? "h-[70%]" : "h-[80%]"} md:hidden`}>
+
+                    <div className="h-full p-8 pt-0 overflow-y-scroll bg-app-black">
+                        {children}
+                    </div>
+
+
+                </div>
+            </>)}
+        {!sideOpen && currentSong && <div className="md:hidden flex justify-between w-full h-[10%] bg-black bg-opacity-100 text-white  items-center px-4">
             <div className="flex items-center">
                 <img
                     src={currentSong?.thumbnail}
@@ -346,11 +353,11 @@ export default function LoginContaier({ children, ActiveScreen }) {
         </div>}
 
 
-        <div className='w-full bg-black sticky bottom-0 h-[10%] md:hidden bg-opacity-100 items-center '>
+        {!sideOpen && <div className='w-full bg-black bottom-0 h-[10%] md:hidden bg-opacity-100 items-center '>
 
             <Bottombar />
 
-        </div>
+        </div>}
     </div>
 
 
