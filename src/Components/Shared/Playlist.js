@@ -31,7 +31,7 @@ const PlaylistView = ({ titleText, cardsData }) => {
                 slidesPerView={slidesPerView}
                 spaceBetween={50}
                 autoplay={{
-                    delay: 1000,
+                    delay: 2500,
                     disableOnInteraction: false,
                 }}
                 pagination={{
@@ -43,8 +43,7 @@ const PlaylistView = ({ titleText, cardsData }) => {
                 {cardsData.map((item, index) => {
                     return <SwiperSlide key={index}>
                         <Card2
-                            title={item.name}
-                            imgUrl={item.thumbnail}
+                            item={item}
                         />
                     </SwiperSlide>
                 }

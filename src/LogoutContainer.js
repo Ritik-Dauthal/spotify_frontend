@@ -78,10 +78,12 @@ export default function LogoutContaier({ children }) {
                         <IconText
                             iconName={"material-symbols:add-box"}
                             displayText={"Create Playlist"}
+                            targetLink={"/uploadSong"}
                         />
                         <IconText
                             iconName={"mdi:cards-heart"}
                             displayText={"Liked Songs"}
+                            targetLink={"/uploadSong"}
                         />
 
 

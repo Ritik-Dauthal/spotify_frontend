@@ -307,11 +307,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         className="text-gray-500 cursor-pointer hover:text-white"
 
                     />
-                    <Icon
-                        icon="ph:heart-bold"
-                        fontSize={25}
-                        className="text-gray-500 cursor-pointer hover:text-white"
-                    />
+                    <Icon icon="ri:music-fill" width="20" height="20" className={`${!isPaused && 'animate-bounce'}`} />
                 </div>
             </div>
 
@@ -347,10 +343,10 @@ export default function LoginContaier({ children, ActiveScreen }) {
                     className="w-10 h-10 rounded"
                 />
                 <div className="flex flex-col pl-4 space-y-1">
-                    <div className="text-sm cursor-pointer hover:underline">
+                    <div className="overflow-hidden text-sm cursor-pointer hover:underline">
                         {currentSong?.name}
                     </div>
-                    <div className="flex text-xs text-gray-500 cursor-pointer hover:underline">
+                    <div className="flex overflow-hidden text-xs text-gray-500 cursor-pointer hover:underline">
                         {currentSong?.artist.firstName +
                             " " +
                             currentSong?.artist.lastName}
@@ -379,11 +375,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                     className="text-gray-500 cursor-pointer hover:text-white"
 
                 />
-                <Icon
-                    icon="ph:heart-bold"
-                    fontSize={25}
-                    className="text-gray-500 cursor-pointer hover:text-white"
-                />
+                <Icon icon="ri:music-fill" fontSize={20} className={`${!isPaused && 'animate-bounce'}`} />
             </div>
         </div>}
 
