@@ -24,7 +24,7 @@ export default function LoginComponent() {
 
     const LoginSchema = Yup.object().shape({
         emailOrusername: Yup.string().required("Please enter username or email"),
-        password: Yup.string().min(8).required("Password is a required field"),
+        password: Yup.string().min(8).required("You need to enter a password"),
 
     });
 
