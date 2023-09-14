@@ -4,6 +4,7 @@ import { makeAuthenticatedGetRequest } from "../Utils/helper";
 import LoginContaier from "../LoginContainer";
 import SingleSongCard from "../Components/Shared/SingleSongCard";
 import IconWithoutText from "../Components/Shared/IconWithoutText";
+import Loader from "../Components/Shared/Loader";
 
 const Search = () => {
     const [isInputFocused, setIsInputFocused] = useState(false);
@@ -73,23 +74,14 @@ const Search = () => {
                         }}
                     />
                 </div>
-                {loading ? (
-                    <div className="flex items-center justify-center animate-spin">
-                        <Icon
-                            icon="teenyicons:loader-outline"
-                            width="30"
-                            height="30"
-                            color="white"
-                        />
-                    </div>
-                ) : (
+                {loading ? <Loader /> : (
                     <div className="mt-5">
                         {showNoResults ? (
                             <p className="text-center text-white">Sorry, no results found.</p>
                         ) : (
 
                             <>
-                                {songData.length != 0 && <div className="text-white">
+                                {songData.length !== 0 && <div className="text-white">
                                     Showing search results for
                                     <span className="font-bold"> {searchText}</span>
                                 </div>}

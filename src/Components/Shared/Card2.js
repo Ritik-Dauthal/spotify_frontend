@@ -3,7 +3,6 @@ import { useContext } from "react";
 import songContext from "../../SongContext";
 
 const Card2 = (item) => {
-    console.log("item", item.item)
     const { currentSong, setCurrentSong } = useContext(songContext);
     return (
         <div className="flex flex-col w-full h-48 p-4 bg-black rounded-lg cursor-pointer">

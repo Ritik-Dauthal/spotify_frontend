@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom'
 import LoginContainer from '../LoginContainer'
 import IconWithoutText from '../Components/Shared/IconWithoutText'
 import { makeAuthenticatedGetRequest } from '../Utils/helper'
-import { Icon } from '@iconify/react'
 import SingleSongCard from '../Components/Shared/SingleSongCard'
+import Loader from '../Components/Shared/Loader'
 
 export default function MyPlaylist() {
     const { playlistId } = useParams()
@@ -19,10 +19,10 @@ export default function MyPlaylist() {
             setLoading(false)
         }
         getData()
-    }, [])
+    })
     return (
         <LoginContainer ActiveScreen="library">
-            {loading ? <div className='flex items-center justify-center animate-spin'> <Icon icon="teenyicons:loader-outline" width="30" height="30" color="white" /></div> :
+            {loading ? <Loader /> :
 
                 <>{
                     playlistDetails._id && <>

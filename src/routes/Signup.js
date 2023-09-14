@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Icon } from "@iconify/react";
 import TextInput from "../Components/Shared/TextInput";
 import PasswordInput from "../Components/Shared/PasswordInput";
@@ -11,10 +11,12 @@ import CalenderInputYear from '../Components/Shared/CalenderInputYear';
 import CalenderInputMonth from '../Components/Shared/CalenderInputMonth';
 import CalenderInputDay from '../Components/Shared/CalenderInputDay';
 import { userContext } from '../App';
+import LoginSignupLoader from '../Components/Shared/LoginSignupLoader';
 
 
 export default function Signup() {
     const [cookie, setCookie] = useCookies(["token"]);
+    const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const { setUser } = useContext(userContext)
 
@@ -49,6 +51,7 @@ export default function Signup() {
         handleSubmit } = useFormik({
             initialValues: { email: '', confirmEmail: '', password: '', username: '', fname: '', lname: '', year: '', Month: '', day: '' },
             onSubmit: async (values) => {
+                setLoading(true)
                 const { email, password, username, fname, lname, year, Month, day } = values
                 const data = { email, password, username, firstName: fname, lastName: lname, year, month: Month, day }
                 const response = await makeUnauthenticatedPOSTRequest("/auth/register", data)
@@ -60,6 +63,7 @@ export default function Signup() {
                     const date = new Date()
                     date.setDate(date.getDate() + 30)
                     setCookie("token", token, { path: "/", expires: date })
+                    setLoading(false)
                     setUser(userData)
                     alert("Registration Success 🤩")
                     navigate("/")
@@ -79,6 +83,10 @@ export default function Signup() {
 
     return (
         <div className="flex flex-col items-center w-full h-full">
+            {loading && (
+                <LoginSignupLoader
+                />
+            )}
             <div className="flex justify-center w-full p-5 border-b border-gray-300 border-solid logo">
                 <Icon icon="logos:spotify" width="150" />
             </div>
