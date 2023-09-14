@@ -68,12 +68,18 @@ export default function Signup() {
                     alert("Registration Success 🤩")
                     navigate("/")
                 }
-                else if (response && response.err === "Already exist")
+                else if (response && response.err === "Already exist") {
                     alert("Email already exist. 🙁")
-                else if (response && response.err === "Username already exist")
+                    setLoading(false)
+                }
+
+                else if (response && response.err === "Username already exist") {
                     alert("username already exist 🙁, please select another username!")
+                    setLoading(false)
+                }
                 else {
                     alert("Registration failed! 😢")
+                    setLoading(false)
                 }
 
 

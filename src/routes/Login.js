@@ -57,11 +57,15 @@ export default function LoginComponent() {
                 }
                 else if (response.err === "Invalid credentials!") {
                     alert("Looks like account not exists. 😢")
+                    setLoading(false)
                 }
-                else if (response.err === "Invalid Password!")
+                else if (response.err === "Invalid Password!") {
                     alert("Wrong Password! 🙁")
+                    setLoading(false)
+                }
 
                 else alert("Login Failed, Please Try Again")
+                setLoading(false)
 
             },
             validationSchema: LoginSchema
