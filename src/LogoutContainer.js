@@ -50,11 +50,13 @@ export default function LogoutContaier({ children }) {
                         <IconText
                             iconName={"material-symbols:search-rounded"}
                             displayText={"Search"}
+                            targetLink={'/search'}
                         />
 
                         <IconText
                             iconName={"icomoon-free:books"}
                             displayText={"Library"}
+                            targetLink={'/myPlaylist'}
 
                         />
                         <IconText

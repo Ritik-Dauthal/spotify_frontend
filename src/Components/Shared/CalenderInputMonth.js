@@ -13,8 +13,8 @@ export default function CalenderInputMonth({ name, label,
         <div className='flex flex-col justify-between w-full mb-6 space-y-2 md:w-[30%]'>
             <label htmlForor={label} className="font-semibold">{label}</label>
 
-            <select className='p-3 text-gray-500 border border-gray-500 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200' onChange={onChange} onBlur={onBlur} value={value} name={name} id="month" defaultValue="Month">
-                <option disabled value="Month">Month</option>
+            <select className='p-3 text-gray-500 border border-gray-500 hover:border-blue-500 focus:outline-none focus:ring focus:ring-blue-200' onChange={onChange} onBlur={onBlur} value={value} name={name} id="month" defaultValue="">
+                <option disabled value="">Month</option>
                 <option value="January">January</option>
                 <option value="February">February</option>
                 <option value="March">March</option>

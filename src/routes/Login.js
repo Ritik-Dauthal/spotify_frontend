@@ -52,7 +52,6 @@ export default function LoginComponent() {
                     console.log(userData, "userdata")
                     setLoading(false)
                     setUser(userData)
-                    alert("Login Success 🤩")
                     navigate("/")
                 }
                 else if (response.err === "Invalid credentials!") {

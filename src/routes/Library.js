@@ -30,8 +30,7 @@ export default function Library() {
         <LoginContainer ActiveScreen="library">
 
             <div>
-                <div className='flex py-4 space-x-4'>
-                    <IconWithoutText iconName={"ep:back"} targetLink={"/"} size={30} />
+                <div className='flex py-4'>
                     <div className='text-2xl font-semibold text-white '>My Playlist</div>
 
                 </div>

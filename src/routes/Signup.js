@@ -65,7 +65,6 @@ export default function Signup() {
                     setCookie("token", token, { path: "/", expires: date })
                     setLoading(false)
                     setUser(userData)
-                    alert("Registration Success 🤩")
                     navigate("/")
                 }
                 else if (response && response.err === "Already exist") {

@@ -19,6 +19,8 @@ export default function CalenderInputYear({ name, label, placeholder,
                 onBlur={onBlur}
                 value={value}
                 placeholder={placeholder}
+                min={1}
+                max={31}
                 className="p-3 placeholder-gray-500 border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
                 id="Day"
 

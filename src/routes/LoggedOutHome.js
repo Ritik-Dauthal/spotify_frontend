@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import LogoutContainer from '../LogoutContainer';
 import { makeUnauthenticatedGETRequest } from '../Utils/helper';
-import { Icon } from '@iconify/react';
+import Loader from '../Components/Shared/Loader';
 
 
 export default function Home() {
@@ -43,26 +43,26 @@ export default function Home() {
 
     return (
         <LogoutContainer>
-            {loading ? <div className='flex items-center justify-center animate-spin'> <Icon icon="teenyicons:loader-outline" width="30" height="30" color="white" /></div> : <div>
+            {loading ? <Loader /> : <div>
                 <PlaylistView
                     titleText="Today's biggest hits"
                     cardsData={songs.slice(0, 7)}
                 />
                 <PlaylistView
-                    titleText="India ki Awaaj"
-                    cardsData={songs.slice(2, 10)}
+                    titleText="Big Hits!"
+                    cardsData={songs.slice(7, 14)}
                 />
                 <PlaylistView
-                    titleText="India's Best"
-                    cardsData={songs.slice(1, 8)}
+                    titleText="Top Choices"
+                    cardsData={songs.slice(14, 21)}
                 />
                 <PlaylistView
                     titleText="Hustle"
-                    cardsData={songs.slice(2, 9)}
+                    cardsData={songs.slice(21, 28)}
                 />
                 <PlaylistView
-                    titleText="Sound of India"
-                    cardsData={songs.slice(0, 6)}
+                    titleText="Relaxed"
+                    cardsData={songs.slice(28, 35)}
                 />
             </div>}
 

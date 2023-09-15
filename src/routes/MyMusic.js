@@ -32,8 +32,7 @@ export default function UploadSong() {
     return (
         <LoginContainer ActiveScreen="myMusic">
             <div>
-                <div className='flex py-4 space-x-4 md:ml-0'>
-                    <IconWithoutText iconName={"ep:back"} targetLink={"/"} size={30} />
+                <div className='flex py-4'>
                     <div className='text-2xl font-semibold text-white '>My Music</div>
 
                 </div>
