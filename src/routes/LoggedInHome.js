@@ -39,7 +39,7 @@ export default function LoggedInHome() {
                     cardsData={songs.slice(7, 15)}
                 />
                 <PlaylistView
-                    titleText="Today's Best"
+                    titleText="Kishor Kumar Hits"
                     cardsData={songs.slice(23, 30)}
                 />
                 <PlaylistView

@@ -57,7 +57,7 @@ export default function Home() {
                     cardsData={songs.slice(15, 23)}
                 />
                 <PlaylistView
-                    titleText="Hustle"
+                    titleText="Kishor Kumar Hits"
                     cardsData={songs.slice(23, 30)}
                 />
                 <PlaylistView
