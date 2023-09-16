@@ -35,21 +35,22 @@ export default function LoggedInHome() {
                     cardsData={songs.slice(0, 7)}
                 />
                 <PlaylistView
-                    titleText="Big Hits!"
-                    cardsData={songs.slice(7, 14)}
+                    titleText="Top mixes"
+                    cardsData={songs.slice(7, 15)}
                 />
                 <PlaylistView
                     titleText="Today's Best"
-                    cardsData={songs.slice(14, 21)}
+                    cardsData={songs.slice(23, 30)}
+                />
+                <PlaylistView
+                    titleText="Big Hits!"
+                    cardsData={songs.slice(30, 40)}
                 />
                 <PlaylistView
                     titleText="Pahadi Songs"
                     cardsData={songs.slice(15, 23)}
                 />
-                <PlaylistView
-                    titleText="Top mixes"
-                    cardsData={songs.slice(28, 35)}
-                />
+
             </div>}
 
 

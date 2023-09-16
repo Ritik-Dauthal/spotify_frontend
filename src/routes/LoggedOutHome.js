@@ -50,7 +50,7 @@ export default function Home() {
                 />
                 <PlaylistView
                     titleText="Big Hits!"
-                    cardsData={songs.slice(7, 14)}
+                    cardsData={songs.slice(7, 15)}
                 />
                 <PlaylistView
                     titleText="Pahadi Songs"
@@ -58,11 +58,11 @@ export default function Home() {
                 />
                 <PlaylistView
                     titleText="Hustle"
-                    cardsData={songs.slice(21, 28)}
+                    cardsData={songs.slice(23, 30)}
                 />
                 <PlaylistView
-                    titleText="Relaxed"
-                    cardsData={songs.slice(28, 35)}
+                    titleText="Rock On!!"
+                    cardsData={songs.slice(30, 40)}
                 />
             </div>}
 
