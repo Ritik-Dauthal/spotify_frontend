@@ -1,4 +1,4 @@
-import React, { useContext, useState, useLayoutEffect, useRef } from 'react'
+import React, { useContext, useState, useLayoutEffect, useRef, useEffect } from 'react'
 import { Icon } from '@iconify/react';
 import IconText from './Components/Shared/IconText';
 import TextWithHover from './Components/Shared/TextWithHover'
@@ -9,10 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import Bottombar from './Components/Shared/Bottombar';
 import { Howl, Howler } from "howler";
 import songContext from "./SongContext"
-import { userContext } from './App';
+import { alertContext, userContext } from './App';
 import AddPlaylist from './modal/AddPlaylist';
 import CreatePlaylist from './modal/CreatePlaylist';
 import { makeAuthenticatedPOSTRequest } from './Utils/helper';
+import AlertModal from './modal/Alert';
 
 
 
@@ -24,6 +25,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
     const navigate = useNavigate()
 
     const { user } = useContext(userContext)
+    const { Alert, setAlert, setAlertMessage, } = useContext(alertContext)
 
     const { firstName, lastName } = user
 
@@ -32,10 +34,24 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
 
 
+    const {
+        currentSong,
+        setCurrentSong,
+        soundPlayed,
+        setSoundPlayed,
+        isPaused,
+        setIsPaused,
+    } = useContext(songContext);
 
     const handleLoginClick = () => {
+        if (soundPlayed) {
+            soundPlayed.stop();
+            setIsPaused(true)
+        }
         removeCookie("token")
-        alert("Logged Out Successfully 🔒")
+        navigate('/')
+        setAlertMessage("Logged Out Successfully 🔒")
+        setAlert(true)
 
     }
     const handleProfileClick = () => {
@@ -49,14 +65,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
         setSideOpen(false)
     }
 
-    const {
-        currentSong,
-        setCurrentSong,
-        soundPlayed,
-        setSoundPlayed,
-        isPaused,
-        setIsPaused,
-    } = useContext(songContext);
+
 
     const firstUpdate = useRef(true);
 
@@ -116,7 +125,8 @@ export default function LoginContaier({ children, ActiveScreen }) {
         if (response._id) {
             setOpenAddPlaylistModal(false)
         }
-        alert("Song added in your playlist 🤩")
+        setAlertMessage("Song added in your playlist 🤩")
+        setAlert(true)
     }
 
 
@@ -134,6 +144,9 @@ export default function LoginContaier({ children, ActiveScreen }) {
                     setOpenCreatePlaylistModal(false);
                 }}
             />
+        )}
+        {Alert && (
+            <AlertModal />
         )}
 
         <div className={`${currentSong ? "h-[90%]" : "h-full"} hidden  w-full md:flex`}>

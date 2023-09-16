@@ -2,13 +2,14 @@ import React, { useContext, useState } from 'react'
 import { makeAuthenticatedPUTRequest } from '../Utils/helper';
 import IconWithoutText from '../Components/Shared/IconWithoutText';
 import LoginContainer from '../LoginContainer';
-import { userContext } from '../App';
+import { alertContext, userContext } from '../App';
 import Loader from '../Components/Shared/Loader';
 
 
 
 export default function MyProfile() {
     const { user, setUser } = useContext(userContext)
+    const { setAlert, setAlertMessage } = useContext(alertContext)
     const [isDisabledF, setIsDisabledF] = useState(true)
     const [isDisabledL, setIsDisabledL] = useState(true)
     const [fname, setFname] = useState(user.firstName)
@@ -36,7 +37,8 @@ export default function MyProfile() {
         }
         if (Object.keys(updatedFields).length === 0) {
 
-            alert("No fields have been updated.");
+            setAlertMessage("No fields Changed");
+            setAlert(true)
             setIsDisabledF(true);
             setIsDisabledL(true);
             setLoading(false)
@@ -52,6 +54,9 @@ export default function MyProfile() {
             const updatedUser = { ...user, ...response.user };
             localStorage.setItem('user', JSON.stringify(updatedUser));
             setLoading(false)
+
+            setAlertMessage("Details updated successfully ✅")
+            setAlert(true)
             setFname(updatedUser.firstName);
             setLname(updatedUser.lastName);
             setIsDisabledF(true);
@@ -60,7 +65,8 @@ export default function MyProfile() {
         } else {
             console.error("User details update failed:", response.error);
             setLoading(false)
-            alert("User details update failed")
+            setAlertMessage("User details update failed ❌")
+            setAlert(true)
         }
     };
 
@@ -75,8 +81,6 @@ export default function MyProfile() {
                         <div className='text-2xl font-semibold text-white '>Welcome {user.firstName},</div>
 
                     </div>
-
-
 
                     <div className='flex flex-col mt-10 space-y-2'>
                         <label htmlFor="Song name" className='font-semibold text-white'>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Icon } from "@iconify/react";
 import TextInput from "../Components/Shared/TextInput";
 import PasswordInput from "../Components/Shared/PasswordInput";
@@ -7,8 +7,9 @@ import { useFormik } from 'formik';
 import * as Yup from "yup";
 import { makeUnauthenticatedPOSTRequest } from '../Utils/helper';
 import { useCookies } from 'react-cookie';
-import { userContext } from '../App';
+import { alertContext, userContext } from '../App';
 import LoginSignupLoader from '../Components/Shared/LoginSignupLoader';
+import LoginSignupAlert from '../modal/LoginSignupAlert';
 
 
 export default function LoginComponent() {
@@ -17,10 +18,14 @@ export default function LoginComponent() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const { setUser } = useContext(userContext)
+    const { setAlert, setAlertMessage, LoginSignupalert,
+        setLoginSignupAlertMessage, setLoginSignupalert
+    } = useContext(alertContext)
 
 
-
-
+    useEffect(() => {
+        console.log(LoginSignupalert, "login")
+    }, [LoginSignupalert])
 
     const LoginSchema = Yup.object().shape({
         emailOrusername: Yup.string().required("Please enter username or email"),
@@ -42,7 +47,6 @@ export default function LoginComponent() {
                 const data = { value: emailOrusername, password }
                 const response = await makeUnauthenticatedPOSTRequest("/auth/login", data)
 
-
                 if (response && !response.err) {
                     const userData = { firstName: response.firstName, lastName: response.lastName, email: response.email, username: response.username, year: response.year, month: response.month, day: response.day }
                     const token = response.token
@@ -52,19 +56,28 @@ export default function LoginComponent() {
                     console.log(userData, "userdata")
                     setLoading(false)
                     setUser(userData)
+                    setAlertMessage("Login Success ✅")
+                    setAlert(true)
                     navigate("/")
                 }
                 else if (response.err === "Invalid credentials!") {
-                    alert("Looks like account not exists. 😢")
                     setLoading(false)
+                    setLoginSignupAlertMessage("Looks like account not exists 🤔")
+                    setLoginSignupalert(true)
                 }
                 else if (response.err === "Invalid Password!") {
-                    alert("Wrong Password! 🙁")
                     setLoading(false)
+                    setLoginSignupAlertMessage("Wrong Password! ❌")
+                    setLoginSignupalert(true)
                 }
 
-                else alert("Login Failed, Please Try Again")
-                setLoading(false)
+
+                else {
+                    setLoading(false)
+                    setLoginSignupAlertMessage("Login Failed, Please Try Again ❌")
+                    setLoginSignupalert(true)
+                }
+
 
             },
             validationSchema: LoginSchema
@@ -74,6 +87,10 @@ export default function LoginComponent() {
         <div className="flex flex-col items-center w-full h-full">
             {loading && (
                 <LoginSignupLoader
+                />
+            )}
+            {LoginSignupalert && (
+                <LoginSignupAlert
                 />
             )}
             <div className="flex justify-center w-full p-5 border-b border-gray-300 border-solid logo">

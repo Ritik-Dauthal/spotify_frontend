@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { makeAuthenticatedPOSTRequest } from '../Utils/helper';
 import LoginContainer from '../LoginContainer';
 import { useNavigate } from 'react-router-dom';
+import { alertContext } from '../App';
 
 
 
 export default function CreatePlaylist({ closeModal }) {
+    const { setAlert, setAlertMessage } = useContext(alertContext)
     const [playlistName, setPlaylistName] = useState("");
     const [playlistImage, setPlaylistImage] = useState("");
     const navigate = useNavigate()
@@ -16,14 +18,16 @@ export default function CreatePlaylist({ closeModal }) {
             { name: playlistName, thumbnail: playlistImage, songs: [] }
         );
         if (response.err) {
-            alert("Could not create Playlist");
+            setAlertMessage("Could not create Playlist ❌");
+            setAlert(true)
             return;
         }
         else {
             setPlaylistImage('')
             setPlaylistName('')
             closeModal()
-            alert("Playlist Created ✅")
+            setAlertMessage("Playlist Created ✅")
+            setAlert(true)
         }
     };
 

@@ -10,8 +10,9 @@ import { useCookies } from 'react-cookie';
 import CalenderInputYear from '../Components/Shared/CalenderInputYear';
 import CalenderInputMonth from '../Components/Shared/CalenderInputMonth';
 import CalenderInputDay from '../Components/Shared/CalenderInputDay';
-import { userContext } from '../App';
+import { alertContext, userContext } from '../App';
 import LoginSignupLoader from '../Components/Shared/LoginSignupLoader';
+import LoginSignupAlert from '../modal/LoginSignupAlert';
 
 
 export default function Signup() {
@@ -19,6 +20,9 @@ export default function Signup() {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const { setUser } = useContext(userContext)
+    const { setAlert, setAlertMessage, LoginSignupalert,
+        setLoginSignupAlertMessage, setLoginSignupalert
+    } = useContext(alertContext)
 
     const SignupSchema = Yup.object().shape({
         email: Yup.string().email().required("You need to enter your email"),
@@ -29,14 +33,19 @@ export default function Signup() {
                 return value === this.parent.email;
             }),
         password: Yup.string().min(8).required("You need to enter a password"),
-        fname: Yup.string().required("Enter a name for your profile"),
+        fname: Yup.string()
+            .matches(/^[A-Za-z]+$/, 'First name must contain only alphabets')
+            .required('Enter first name for your profile'),
+        lname: Yup.string()
+            .matches(/^[A-Za-z]+$/, 'Last name must contain only alphabets')
+            .required('Enter last name for your profile'),
         username: Yup.string().required("Please select a username"),
         year: Yup.number().integer("Year must be an integer")
             .min(1900, "Year must be greater than or equal to 1900")
             .max(new Date().getFullYear(), "Year cannot be in the future")
             .required("Enter a valid year"),
         Month: Yup.string().required("Enter a valid month"),
-        day: Yup.number().required("Enter a valid day")
+        day: Yup.number().typeError('Please enter a number').required("Enter a valid day")
             .integer('Day must be an integer')
             .min(1, 'Day must be at least 1')
             .max(31, 'Day must be at most 31'),
@@ -65,20 +74,25 @@ export default function Signup() {
                     setCookie("token", token, { path: "/", expires: date })
                     setLoading(false)
                     setUser(userData)
+                    setAlertMessage("Registration Success ✅")
+                    setAlert(true)
                     navigate("/")
                 }
                 else if (response && response.err === "Already exist") {
-                    alert("Email already exist. 🙁")
                     setLoading(false)
+                    setLoginSignupAlertMessage("Email already exist. 🫠")
+                    setLoginSignupalert(true)
                 }
 
                 else if (response && response.err === "Username already exist") {
-                    alert("username already exist 🙁, please select another username!")
                     setLoading(false)
+                    setLoginSignupAlertMessage("username already exist!🙁")
+                    setLoginSignupalert(true)
                 }
                 else {
-                    alert("Registration failed! 😢")
                     setLoading(false)
+                    setLoginSignupAlertMessage("Registration failed! ❌")
+                    setLoginSignupalert(true)
                 }
 
 
@@ -90,6 +104,10 @@ export default function Signup() {
         <div className="flex flex-col items-center w-full h-full">
             {loading && (
                 <LoginSignupLoader
+                />
+            )}
+            {LoginSignupalert && (
+                <LoginSignupAlert
                 />
             )}
             <div className="flex justify-center w-full p-5 border-b border-gray-300 border-solid logo">
@@ -175,7 +193,7 @@ export default function Signup() {
                             errors={errors} />
 
                         <CalenderInputDay className="my-6"
-                            type="number"
+                            type="text"
                             label={"Day"}
                             name="day"
                             placeholder="DD"

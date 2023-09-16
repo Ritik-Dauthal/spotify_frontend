@@ -1,16 +1,17 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import CloudinaryUpload from '../Components/Shared/CloudinaryUpload';
 import CloudSongImage from '../Components/Shared/CloudSongImage';
 import { makeAuthenticatedPOSTRequest } from '../Utils/helper';
-import IconWithoutText from '../Components/Shared/IconWithoutText';
 import LoginContainer from '../LoginContainer';
 import Loader from '../Components/Shared/Loader';
+import { alertContext } from '../App';
 
 
 
 export default function UploadSong() {
+    const { setAlert, setAlertMessage } = useContext(alertContext)
     const [sideOpen, setSideOpen] = useState(false)
     const [cookie, setCookie, removeCookie] = useCookies(["token"]);
     const [name, setName] = useState("");
@@ -19,10 +20,11 @@ export default function UploadSong() {
     const [uploadedSongFileName, setUploadedSongFileName] = useState();
     const [uploadedImageStatus, setUploadedImageStatus] = useState();
     const [loading, setLoading] = useState(false)
+
     const navigate = useNavigate()
 
-
     const submitSong = async () => {
+
 
         const data = { name, thumbnail, track: SongUrl };
         const response = await makeAuthenticatedPOSTRequest(
@@ -30,12 +32,16 @@ export default function UploadSong() {
             data
         );
         if (response.err) {
-            alert("Could not create song");
+            setAlertMessage("Uploading Failed ❌");
+            setAlert(true)
             return;
         }
         setLoading(false)
-        alert("Song uploaded successfully ✅");
-        navigate("/myMusic")
+        setAlertMessage("Song uploaded successfully ✅");
+        setAlert(true)
+        navigate('/myMusic')
+
+
     };
 
 

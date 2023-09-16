@@ -14,6 +14,7 @@ import Library from "./routes/Library";
 import MyPlaylist from "./routes/MyPlaylist";
 
 export const userContext = createContext()
+export const alertContext = createContext()
 
 function App() {
   const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -22,6 +23,10 @@ function App() {
   const [soundPlayed, setSoundPlayed] = useState(null);
   const [isPaused, setIsPaused] = useState(true);
   const [user, setUser] = useState(storedUser)
+  const [Alert, setAlert] = useState(false)
+  const [AlertMessage, setAlertMessage] = useState('')
+  const [LoginSignupalert, setLoginSignupalert] = useState(false)
+  const [LoginSignupalertMessage, setLoginSignupAlertMessage] = useState('')
 
   useEffect(() => {
     if (user) {
@@ -50,31 +55,36 @@ function App() {
             }}
           >
             <userContext.Provider value={{ user, setUser }}>
+              <alertContext.Provider value={{ Alert, setAlert, AlertMessage, setAlertMessage, LoginSignupalert, setLoginSignupAlertMessage, setLoginSignupalert, LoginSignupalertMessage }}>
 
 
-              <Routes>
-                <Route path="/" element={<LoggedInHome />} />
-                <Route path="/uploadSong" element={<UploadSong />} />
-                <Route path="/myMusic" element={<MyMusic />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="/myPlaylist" element={<Library />} />
-                <Route path="/playlist/:playlistId" element={<MyPlaylist />} />
-                <Route path="/myProfile" element={<MyProfile />} />
-                <Route path="*" element={<Navigate to="/" />} />
+                <Routes>
+                  <Route path="/" element={<LoggedInHome />} />
+                  <Route path="/uploadSong" element={<UploadSong />} />
+                  <Route path="/myMusic" element={<MyMusic />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="/myPlaylist" element={<Library />} />
+                  <Route path="/playlist/:playlistId" element={<MyPlaylist />} />
+                  <Route path="/myProfile" element={<MyProfile />} />
+                  <Route path="*" element={<Navigate to="/" />} />
 
-              </Routes>
+                </Routes>
+              </alertContext.Provider>
             </userContext.Provider>
           </songContext.Provider>
 
         ) : (
           <userContext.Provider value={{ user, setUser }}>
-            <Routes>
-              <Route path="/" element={<LoggedOutHome />} />
-              <Route path="/login" element={<LoginComponent />} />
-              <Route path="/signup" element={<SignupComponent />} />
-              <Route path="*" element={<Navigate to="/login" />} />
+            <alertContext.Provider value={{ Alert, setAlert, AlertMessage, setAlertMessage, LoginSignupalert, setLoginSignupAlertMessage, setLoginSignupalert, LoginSignupalertMessage }}>
 
-            </Routes>
+              <Routes>
+                <Route path="/" element={<LoggedOutHome />} />
+                <Route path="/login" element={<LoginComponent />} />
+                <Route path="/signup" element={<SignupComponent />} />
+                <Route path="*" element={<Navigate to="/login" />} />
+
+              </Routes>
+            </alertContext.Provider>
           </userContext.Provider>
         )}
       </BrowserRouter>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Icon } from '@iconify/react';
 import IconText from './Components/Shared/IconText';
 import TextWithHover from './Components/Shared/TextWithHover'
@@ -7,13 +7,18 @@ import { useCookies } from 'react-cookie';
 import SidebarLogout from './Components/Shared/SidebarLogut';
 import { useNavigate } from 'react-router-dom';
 import Bottombar from './Components/Shared/Bottombar';
+import { alertContext } from './App';
+import AlertModal from './modal/Alert';
 
 
 
 export default function LogoutContaier({ children }) {
     const [sideOpen, setSideOpen] = useState(false)
     const [cookie, setCookie, removeCookie] = useCookies(["token"]);
+    const { Alert } = useContext(alertContext)
     const navigate = useNavigate()
+
+
 
     const handleLoginClick = () => {
         navigate("/login")
@@ -31,7 +36,10 @@ export default function LogoutContaier({ children }) {
     }
 
     return (<div className='w-full h-full bg-app-black'>
-
+        {Alert && (
+            <AlertModal
+            />
+        )}
 
         <div className='hidden w-full h-full md:flex'>
             <div className='flex flex-col justify-between w-1/5 h-full bg-black '>

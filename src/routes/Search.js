@@ -3,7 +3,6 @@ import { Icon } from "@iconify/react";
 import { makeAuthenticatedGetRequest } from "../Utils/helper";
 import LoginContaier from "../LoginContainer";
 import SingleSongCard from "../Components/Shared/SingleSongCard";
-import IconWithoutText from "../Components/Shared/IconWithoutText";
 import Loader from "../Components/Shared/Loader";
 
 const Search = () => {
@@ -46,7 +45,7 @@ const Search = () => {
     }, [searchText]);
 
     return (
-        <LoginContaier curActiveScreen="search">
+        <LoginContaier ActiveScreen="search">
             <div className="w-full">
                 <div className='flex py-4'>
                     <div className='text-2xl font-semibold text-white '>Search Song</div>
