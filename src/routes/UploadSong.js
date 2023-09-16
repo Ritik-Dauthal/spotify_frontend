@@ -87,7 +87,7 @@ export default function UploadSong() {
 
                             <div className="">
                                 {uploadedImageStatus ? (
-                                    <div className="text-white">
+                                    <div className="text-center text-white">
                                         Uploaded {uploadedImageStatus}fully ✅
                                     </div>
                                 ) : (<div className='flex flex-col'>

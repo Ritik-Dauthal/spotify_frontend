@@ -61,7 +61,7 @@ export default function CreatePlaylist({ closeModal }) {
 
                     <div >
                         {playlistImageStatus ? (
-                            <div className="text-white">
+                            <div className="text-center text-white">
                                 Uploaded {playlistImageStatus}fully ✅
                             </div>
                         ) : (<div className='flex flex-col items-center justify-center'>
