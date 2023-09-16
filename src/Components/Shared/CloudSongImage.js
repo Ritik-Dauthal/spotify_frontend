@@ -26,7 +26,7 @@ const CloudSongImage = ({ setThumbnail, setUploadedImageStatus }) => {
 
     return (
         <button
-            className="px-10 py-3 text-gray-500 bg-white border border-gray-400 border-solid rounded md:px-20 hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
+            className="w-full py-3 text-gray-500 bg-white border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
             onClick={uploadThumbnail}
         >
             Select Image

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { makeAuthenticatedPOSTRequest } from '../Utils/helper';
-import LoginContainer from '../LoginContainer';
 import { useNavigate } from 'react-router-dom';
 import { alertContext } from '../App';
+import CloudSongImage from '../Components/Shared/CloudSongImage';
 
 
 
@@ -10,6 +10,7 @@ export default function CreatePlaylist({ closeModal }) {
     const { setAlert, setAlertMessage } = useContext(alertContext)
     const [playlistName, setPlaylistName] = useState("");
     const [playlistImage, setPlaylistImage] = useState("");
+    const [playlistImageStatus, setPlaylistImageStatus] = useState();
     const navigate = useNavigate()
 
     const createPlaylist = async () => {
@@ -46,7 +47,7 @@ export default function CreatePlaylist({ closeModal }) {
                     e.stopPropagation();
                 }}
             >
-                <div className="mb-5 text-lg font-semibold text-white">
+                <div className="mb-2 text-lg font-semibold text-white">
                     Create Playlist
                 </div>
                 <div className="flex flex-col items-center space-y-2">
@@ -55,16 +56,21 @@ export default function CreatePlaylist({ closeModal }) {
                         placeholder="Playlist Name"
                         value={playlistName}
                         onChange={(e) => { setPlaylistName(e.target.value) }}
-                        className="py-3 w-[90%] text-center placeholder-gray-500 border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
+                        className="w-full py-3 text-center placeholder-gray-500 border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
                     />
-                    <input
-                        label="Thumbnail"
-                        value={playlistImage}
-                        onChange={(e) => { setPlaylistImage(e.target.value) }}
-                        className="py-3 w-[90%] text-center placeholder-gray-500 border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
-                        placeholder="Thumbnail"
 
-                    />
+                    <div >
+                        {playlistImageStatus ? (
+                            <div className="text-white">
+                                Uploaded {playlistImageStatus}fully ✅
+                            </div>
+                        ) : (<div className='flex flex-col items-center justify-center'>
+                            <CloudSongImage setThumbnail={setPlaylistImage} setUploadedImageStatus={setPlaylistImageStatus} />
+                            <p className='w-full mt-1 text-sm text-center text-white'>(Please upload in JPG or AVIF format only.)</p>
+                        </div>
+                        )}
+                    </div>
+
                     <button
                         className="flex items-center justify-center w-1/2 py-3 mt-4 font-semibold bg-white rounded cursor-pointer disabled:bg-gray-500"
                         onClick={createPlaylist}

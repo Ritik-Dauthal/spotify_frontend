@@ -64,9 +64,9 @@ export default function UploadSong() {
 
                     </div>
 
-                    <div className='flex flex-col items-center w-[80%] py-5 ml-10 md:ml-0 md:justify-around md:w-full md:flex-row'>
+                    <div className='flex flex-col items-center justify-around w-full py-5 md:flex-row'>
 
-                        <div className='flex flex-col space-y-2'>
+                        <div className='flex flex-col w-[90%] space-y-2 md:w-[40%] md:mb-4'>
                             <label htmlFor="Song name" className='font-semibold text-center text-white'>
                                 Song name
                             </label>
@@ -75,12 +75,12 @@ export default function UploadSong() {
                                 placeholder="Song name"
                                 value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                className="p-3 placeholder-gray-500 border border-gray-400 border-solid rounded md:pl-20 hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
+                                className="w-full py-3 text-center placeholder-gray-500 border border-gray-400 border-solid rounded hover:border-blue-500 hover:bg-blue-100 focus:outline-none focus:ring focus:ring-blue-200"
                                 id="Song name"
 
                             />
                         </div>
-                        <div className='flex flex-col my-4 space-y-2 md:my-0'>
+                        <div className='flex flex-col space-y-2 w-[90%] md:w-[40%]'>
                             <label htmlFor="Thumbnail" className='font-semibold text-center text-white'>
                                 Thumbnail
                             </label>
@@ -90,9 +90,9 @@ export default function UploadSong() {
                                     <div className="text-white">
                                         Uploaded {uploadedImageStatus}fully ✅
                                     </div>
-                                ) : (<div className='flex flex-col items-center'>
+                                ) : (<div className='flex flex-col'>
                                     <CloudSongImage setThumbnail={setThumbnail} setUploadedImageStatus={setUploadedImageStatus} />
-                                    <p className='mt-1 text-sm text-center text-white'>(Please upload in JPEG or AVIF format only.)</p>
+                                    <p className='text-sm text-center text-white'>(Please upload in JPG or AVIF format only.)</p>
                                 </div>
                                 )}
                             </div>
