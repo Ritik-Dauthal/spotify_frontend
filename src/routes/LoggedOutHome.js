@@ -52,17 +52,19 @@ export default function Home() {
                     titleText="Big Hits!"
                     cardsData={songs.slice(7, 15)}
                 />
+
                 <PlaylistView
-                    titleText="Pahadi Songs"
-                    cardsData={songs.slice(15, 23)}
+                    titleText="Punjabi Beats"
+                    cardsData={songs.slice(29, 40)}
                 />
                 <PlaylistView
                     titleText="Kishor Kumar Hits"
-                    cardsData={songs.slice(22, 30)}
+                    cardsData={songs.slice(22, 29)}
                 />
+
                 <PlaylistView
-                    titleText="Rock On!!"
-                    cardsData={songs.slice(30, 40)}
+                    titleText="Pahadi Songs"
+                    cardsData={songs.slice(15, 22)}
                 />
             </div>}
 
