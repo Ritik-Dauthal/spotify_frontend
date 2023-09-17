@@ -108,6 +108,7 @@ export default function LogoutContaier({ children }) {
                         </div>
                     </div>
                 </div>
+                <div className='py-1 text-xs text-center text-white'>Copyright@ Ritik Dauthal</div>
             </div>
             <div className='w-full h-full md:w-4/5'>
                 <div className='w-full bg-black  h-[10%] md:flex hidden bg-opacity-90 justify-end items-center '>

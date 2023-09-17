@@ -229,6 +229,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         </div>
                     </div>
                 </div>
+                <div className='py-1 text-xs text-center text-white'>Copyright@ Ritik Dauthal</div>
             </div>
             <div className='w-full h-full md:w-4/5 bg-app-black'>
                 <div className='w-full bg-black  h-[10%] md:flex hidden bg-opacity-30 justify-end items-center '>

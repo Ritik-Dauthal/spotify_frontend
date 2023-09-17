@@ -5,7 +5,7 @@ import songContext from "../../SongContext";
 const Card2 = (item) => {
     const { currentSong, setCurrentSong } = useContext(songContext);
     return (
-        <div className="flex flex-col w-full h-48 p-4 bg-black rounded-lg cursor-pointer">
+        <div className="flex flex-col w-full h-48 p-4 bg-black rounded-lg cursor-pointer" onClick={() => setCurrentSong(item.item)}>
             <div className="h-3/5">
                 <img
                     className="object-cover w-full h-full rounded-md"
