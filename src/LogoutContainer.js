@@ -121,7 +121,7 @@ export default function LogoutContaier({ children }) {
                         <Button bText={"Log In"} className={"px-6 py-2 font-semibold mt-2 bg-gray-200 hover:bg-white transition-transform transform hover:scale-105"} onClick={handleLoginClick} />
                     </div>
                 </div>
-                <div className='w-full h-[90%] overflow-y-scroll bg-app-black'>
+                <div className='w-full h-[90%] overflow-y-auto bg-app-black'>
 
                     <div className="p-8 pt-0 ">
                         {children}
@@ -149,7 +149,7 @@ export default function LogoutContaier({ children }) {
                 </div>
                 <div className='md:hidden h-[80%]'>
 
-                    <div className="h-full p-8 pt-0 overflow-y-scroll bg-app-black">
+                    <div className="h-full p-8 pt-0 overflow-y-auto bg-app-black">
                         {children}
                     </div>
 

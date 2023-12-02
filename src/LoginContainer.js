@@ -243,7 +243,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
                     </div>
                 </div>
-                <div className='w-full h-[90%] overflow-y-scroll bg-app-black'>
+                <div className='w-full h-[90%] overflow-y-auto bg-app-black'>
 
                     <div className="p-8 pt-0">
                         {children}
@@ -342,7 +342,7 @@ export default function LoginContaier({ children, ActiveScreen }) {
                 </div>
                 <div className={`${currentSong ? "h-[70%]" : "h-[80%]"} md:hidden`}>
 
-                    <div className="h-full p-8 pt-0 overflow-y-scroll bg-app-black">
+                    <div className="h-full p-8 pt-0 overflow-y-auto bg-app-black">
                         {children}
                     </div>
 

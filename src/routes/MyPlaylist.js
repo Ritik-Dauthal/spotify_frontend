@@ -30,7 +30,7 @@ export default function MyPlaylist() {
                             <div className='flex py-4'>
                                 <div className='text-2xl font-semibold text-white '>{playlistDetails.name}</div>
                             </div>
-                            <div className='flex flex-col overflow-y-scroll'>
+                            <div className='flex flex-col overflow-y-auto'>
                                 {playlistDetails.songs.length === 0 &&
                                     <div className='flex justify-center'>
                                         <p className='text-lg text-white'>No songs in this playlist</p>

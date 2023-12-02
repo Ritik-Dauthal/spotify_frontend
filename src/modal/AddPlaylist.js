@@ -25,7 +25,7 @@ const AddPlaylist = ({ closeModal, addSongToPlaylist }) => {
             style={{ zIndex: 1000 }}
         >
             <div
-                className="md:w-1/3 max-h-[50%] overflow-y-scroll w-[85%] p-8 rounded-md bg-app-black"
+                className="md:w-1/3 max-h-[50%] overflow-y-auto w-[85%] p-8 rounded-md bg-app-black"
                 onClick={(e) => {
                     e.stopPropagation();
                 }}

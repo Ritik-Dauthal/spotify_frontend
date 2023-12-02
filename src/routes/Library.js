@@ -42,7 +42,7 @@ export default function Library() {
 
                     }
 
-                    {<div className="grid grid-cols-2 gap-5 py-5 overflow-y-scroll md:grid-cols-3">
+                    {<div className="grid grid-cols-2 gap-5 py-5 overflow-y-auto md:grid-cols-3">
                         {myPlaylists.map((item, index) => {
                             return (
                                 <Card
