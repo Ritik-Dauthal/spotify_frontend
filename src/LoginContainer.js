@@ -7,7 +7,7 @@ import { useCookies } from 'react-cookie';
 import SidebarLogin from './Components/Shared/SidebarLogIn';
 import { useNavigate } from 'react-router-dom';
 import Bottombar from './Components/Shared/Bottombar';
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 import songContext from "./SongContext"
 import { alertContext, userContext } from './App';
 import AddPlaylist from './modal/AddPlaylist';
@@ -29,8 +29,8 @@ export default function LoginContaier({ children, ActiveScreen }) {
 
     const { firstName, lastName } = user
 
-    const f = firstName.substring(0, 1).toUpperCase();
-    const l = lastName.substring(0, 1).toUpperCase();
+    const f = firstName?.substring(0, 1).toUpperCase();
+    const l = lastName?.substring(0, 1).toUpperCase();
 
 
 
@@ -271,9 +271,9 @@ export default function LoginContaier({ children, ActiveScreen }) {
                             {currentSong?.name}
                         </div>
                         <div className="text-xs text-gray-500 cursor-pointer hover:underline">
-                            {currentSong.artist.firstName +
+                            {currentSong?.artist?.firstName +
                                 " " +
-                                currentSong?.artist.lastName}
+                                currentSong?.artist?.lastName}
                         </div>
                     </div>
                 </div>
@@ -361,9 +361,9 @@ export default function LoginContaier({ children, ActiveScreen }) {
                         {currentSong?.name}
                     </div>
                     <div className="flex overflow-hidden text-xs text-gray-500 cursor-pointer hover:underline">
-                        {currentSong?.artist.firstName +
+                        {currentSong?.artist?.firstName +
                             " " +
-                            currentSong?.artist.lastName}
+                            currentSong?.artist?.lastName}
                     </div>
                 </div>
             </div>
